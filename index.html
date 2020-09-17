@@ -12,25 +12,60 @@
 <body>
 
   <div class="jumbotron">
-    <h1 class="text-center">Coding Quiz Challenge!</h1>
+
+    <div id="start-screen">
+    <h1 id="title" class="text-center">
+      Coding Quiz Challenge!
+    </h1>
+
+    <div class="questions" style="display: none;">
+      questions
+    </div>
+
     <div class="text-center">
-      <p class="rules">
+
+      <p id="rules">
         Answer the following code-related questions withing the given time limit. Incorrect answers reduces the timer by
         10 seconds.
       </p>
+
       <button id="start-button" class="btn btn-primary btn-lg">Start Quiz!</button>
-      <!-- <button id="random-button" class="btn btn-primary btn-lg"></button>
-      <button id="random-button" class="btn btn-primary btn-lg"></button>
-      <button id="random-button" class="btn btn-primary btn-lg"></button>
-      <button id="random-button" class="btn btn-primary btn-lg"></button> -->
+      
     </div>
-  </div>
-  <div style="text-align: center;">
-    <span id="countdown" style="font-size: 100px;">
-      60
-    </span>
-  </div>
+
+ </div>
+
+ <div id="quiz">
+    <p id="questions">
+
+    </p>
+
+    <button id="answer-1"></button>
+    <button id="answer-2"></button>
+    <button id="answer-3"></button>
+    <button id="answer-4"></button>
+
+ </div>
+
+</div>
+
+<div style="text-align: center;">
+
+  <span id="countdown" style="font-size: 100px;">
+    60
+  </span>
+
+</div>
   <script type="text/javascript">
+  var q1 = {
+      ques: "What does CSS stand for?",
+      a1: "Computer Science Student",
+      a2: "Cascading Style Sheets",
+      a3: "Calling Subject Start",
+      a4: "Concluding Switch Statement",
+      correct: "Cascading Style Sheets",
+  }
+  var questions = [q1];
   function startQuiz() {
     var seconds = document.getElementById("countdown").textContent;
     var countdown = setInterval(function() {
@@ -39,7 +74,16 @@
       if (seconds <= 0) clearInterval(countdown);
       //***highScr();
     }, 1000);
-  // Create the countdown timer.
+    var startTitle = document.getElementById("title");
+      startTitle.style.display = "none";
+    var rules = document.getElementById("rules");
+      rules.style.display = "none";
+    var startBtn = document.getElementById("start-button");
+      startBtn.style.display = "none";
+    for (var i=0; i < questions.length; i++) {
+      questions[i].ques.textContent = questions[i].ques;
+    };
+    
   }
     document.getElementById("start-button").addEventListener("click", function(){
     startQuiz();
