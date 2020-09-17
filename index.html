@@ -36,14 +36,12 @@
  </div>
 
  <div id="quiz">
-    <p id="questions">
+    <p id="questions"></p>
 
-    </p>
-
-    <button id="answer-1"></button>
-    <button id="answer-2"></button>
-    <button id="answer-3"></button>
-    <button id="answer-4"></button>
+    <button id="answer-1" style="display: none;"></button>
+    <button id="answer-2" style="display: none;"></button>
+    <button id="answer-3" style="display: none;"></button>
+    <button id="answer-4" style="display: none;"></button>
 
  </div>
 
@@ -63,8 +61,15 @@
       a2: "Cascading Style Sheets",
       a3: "Calling Subject Start",
       a4: "Concluding Switch Statement",
-      correct: "Cascading Style Sheets",
+      correct: "Cascading Style Sheets"
   }
+  
+  var blankQ = document.getElementById("questions");
+  var blankA1 = document.getElementById("answer-1");
+  var blankA2 = document.getElementById("answer-2");
+  var blankA3 = document.getElementById("answer-3");
+  var blankA4 = document.getElementById("answer-4");
+
   var questions = [q1];
   function startQuiz() {
     var seconds = document.getElementById("countdown").textContent;
@@ -80,11 +85,51 @@
       rules.style.display = "none";
     var startBtn = document.getElementById("start-button");
       startBtn.style.display = "none";
+    blankA1.style.display = "block";
+    blankA2.style.display = "block";
+    blankA3.style.display = "block";
+    blankA4.style.display = "block";
     for (var i=0; i < questions.length; i++) {
-      questions[i].ques.textContent = questions[i].ques;
+      blankQ.textContent = questions[i].ques;
+      blankA1.textContent = questions[i].a1;
+      blankA2.textContent = questions[i].a2;
+      blankA3.textContent = questions[i].a3;
+      blankA4.textContent = questions[i].a4;
+      blankA1.addEventListener("click", function(){
+        if (blankA1.textContent === questions[i].correct){
+          return;
+        } else {
+          seconds = (seconds - 10);
+          return;
+        }
+        });
+      blankA2.addEventListener("click", function(){
+        if (blankA2.textContent === questions[i].correct){
+          return;
+        } else {
+          seconds = (seconds - 10);
+          return;
+        }
+        });
+      blankA3.addEventListener("click", function(){
+        if (blankA3.textContent === questions[i].correct){
+          return;
+        } else {
+          seconds = (seconds - 10);
+          return;
+        }
+        });
+      blankA4.addEventListener("click", function(){
+        if (blankA4.textContent === questions[i].correct){
+          return;
+        } else {
+          seconds = (seconds - 10);
+          return;
+        }
+        });
     };
     
-  }
+  };
     document.getElementById("start-button").addEventListener("click", function(){
     startQuiz();
     });
