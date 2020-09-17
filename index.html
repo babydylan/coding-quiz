@@ -1,28 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Coding Quiz</title>
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 </head>
+
 <body>
 
   <div class="jumbotron">
-
     <h1 class="text-center">Coding Quiz Challenge!</h1>
-
     <div class="text-center">
-
+      <p class="rules">
+        Answer the following code-related questions withing the given time limit. Incorrect answers reduces the timer by
+        10 seconds.
+      </p>
+      <button id="start-button" class="btn btn-primary btn-lg">Start Quiz!</button>
+      <!-- <button id="random-button" class="btn btn-primary btn-lg"></button>
+      <button id="random-button" class="btn btn-primary btn-lg"></button>
+      <button id="random-button" class="btn btn-primary btn-lg"></button>
+      <button id="random-button" class="btn btn-primary btn-lg"></button> -->
     </div>
-
   </div>
-
+  <div style="text-align: center;">
+    <span id="countdown" style="font-size: 100px;">
+      60
+    </span>
+  </div>
   <script type="text/javascript">
-
+  function startQuiz() {
+    var seconds = document.getElementById("countdown").textContent;
+    var countdown = setInterval(function() {
+      seconds--;
+      document.getElementById("countdown").textContent = seconds;
+      if (seconds <= 0) clearInterval(countdown);
+      //***highScr();
+    }, 1000);
+  // Create the countdown timer.
+  }
+    document.getElementById("start-button").addEventListener("click", function(){
+    startQuiz();
+    });
   </script>
-  
+
 </body>
+
 </html>
